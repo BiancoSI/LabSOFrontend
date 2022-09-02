@@ -29,7 +29,7 @@ export function initializer(keycloak: KeycloakService): () => Promise<any> {
             //      </body>
             // </html>
             //onLoad: 'login-required',
-            checkLoginIframe: false,
+            checkLoginIframe: true,
             //checkLoginIframeInterval:30,
             // silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
           },
