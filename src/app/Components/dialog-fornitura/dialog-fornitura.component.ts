@@ -52,7 +52,7 @@ export class DialogFornituraComponent implements OnInit {
     if(status){
       var arr = response as Prodotto[];
       arr.forEach(element => {
-        if(this.prodotti_che_serve.find((elem:Prodotto)=>{return elem.id != element.id}) || this.prodotti_che_serve.length == 0)
+        if(!this.prodotti_che_serve.find((elem:Prodotto)=>{return elem.id == element.id}) || this.prodotti_che_serve.length == 0)
           this.prodotti_che_non.push(element);
       });
     }else{
