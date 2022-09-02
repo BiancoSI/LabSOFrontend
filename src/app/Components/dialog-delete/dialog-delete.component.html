@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Eliminazione</h1>
+<div mat-dialog-content>
+    <h1>confermi di voler eliminare?</h1>
+    <h3>Eliminando potresti alterare altri elementi come Fornitura, Ordini, ecc...</h3>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="submit(false)">Cancel</button>
+    <button class="margin" mat-button (click)="submit(true)">Submit</button>
+</div>

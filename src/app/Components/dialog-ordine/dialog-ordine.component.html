@@ -1,0 +1,63 @@
+<h1 mat-dialog-title>Ordine</h1>
+<div mat-dialog-content style="display: flex; gap:30px" *ngIf="!error">
+    <section style="flex-grow: 1; flex-shrink: 1; ">
+        <form [formGroup]="formGroup" style=" display:flex;flex-direction: column;">
+            <mat-form-field appearance="outline">
+                <mat-label>Data Creazione</mat-label>
+                <input matInput type="date" formControlName="dataCreazione">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Data Prevista Consegna</mat-label>
+                <input matInput type="date" formControlName="dataConsegna" [value]=" formGroup.controls['dataConsegna'].value ">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Fornitore</mat-label>
+                <input matInput formControlName="fornitore" [matAutocomplete]="auto" (ngModelChange)="trova_prodotti()">
+                <mat-autocomplete #auto autoActiveFirstOption>
+                    <mat-option *ngFor="let f of fornitori" [value]="f.piva">
+                        {{f.nome}} di {{f.sede}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </section>
+    <section style="flex-grow: 1; flex-shrink: 1; display: flex; gap:10px;">
+        <div style="flex-grow: 1;">
+            <mat-action-list>
+                <mat-list-item *ngFor="let p of prodotti_scelti">
+                    {{p.prodotto.nome}}, {{p.prodotto.tipologia}},  {{p.quantita}} {{p.prezzo}}€ cada uno
+                    <button mat-icon-button style="margin-left: 10px;" (click)="rimuovi(p)"><mat-icon>remove</mat-icon></button>
+                </mat-list-item>
+            </mat-action-list>
+        </div>
+        <div style="flex-grow: 1; ">
+            <form [formGroup]="formGroup_prodotti" style="display: flex; flex-direction: column;">
+                <mat-form-field>
+                    <mat-label>Prodotto</mat-label>
+                    <input matInput formControlName="prodotto" [matAutocomplete]="auto2">
+                    <mat-autocomplete #auto2>
+                        <mat-option *ngFor="let p of prodotti" [value]="p.id">
+                            {{p.nome}} {{p.tipologia}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field style="margin-left: 10px;">
+                    <mat-label>Quantita</mat-label>
+                    <input matInput formControlName="quantita">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Prezzo</mat-label>
+                    <input matInput formControlName="prezzo">
+                </mat-form-field>
+                <button mat-icon-button [disabled]="!formGroup_prodotti.valid" (click)="addProdotto()"><mat-icon>add</mat-icon></button>
+            </form>
+        </div>
+    </section>
+</div>
+<div mat-dialog-content *ngIf="error">
+    <h1>Error SERVER : {{message}}</h1>
+</div>
+<div mat-dialog-actions >
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button style="margin-left: 15px;" (click)="sendOrdine()">Save</button>
+</div>

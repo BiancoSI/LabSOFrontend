@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button routerLink="/home" style="margin-left: 30px;"><mat-icon>home</mat-icon></button>
+    <span class="example_spacer"></span>
+    Bed & Breakfast Nature <mat-icon>spa</mat-icon>
+    <span class="example_spacer"></span>
+    <button mat-icon-button style="margin-right: 30px;" *ngIf="!logged" routerLink="/login"><mat-icon>login</mat-icon></button>
+    <button mat-icon-button style="margin-right: 30px;" (click)="logout()" *ngIf="logged" ><mat-icon>logout</mat-icon></button>
+    <div *ngIf="logged" style="margin-left: 15px;">
+        <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+        <mat-menu #menu>
+            <button mat-menu-item routerLink="/prodotti">Prodotti</button>
+            <button mat-menu-item routerLink="/fornitori">Fornitori</button>
+            <button mat-menu-item routerLink="/ordini">Ordini</button>
+            <button mat-menu-item routerLink="/fatture-fornitori">Fatture Fornitori</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

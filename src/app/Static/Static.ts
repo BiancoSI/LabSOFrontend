@@ -1,0 +1,13 @@
+export const HOME_APP ='http://localhost:4200',
+ADDRESS_SERVER = 'http://localhost:9090',
+HOME='/home',
+ADMIN='/admin',
+PRODOTTI = 'prodotto',
+FORNITORI='fornitore',
+FORNITURE='fornitura',
+GET='/get',
+ADD='/add',
+DELETE='/delete',
+MODIFY='/modify',
+ORDINI='ordine',
+FATUREF='fatture-fornitore';

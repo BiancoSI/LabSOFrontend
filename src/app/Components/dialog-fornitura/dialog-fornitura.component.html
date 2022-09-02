@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Gestione Fornitura</h1>
+<div mat-dialog-content *ngIf="!error" style="display: flex; gap: 30px;">
+    <div style="flex-grow: 1;">
+        <h2>Prodotti Serviti</h2>
+        <h3>Selezionare per rimuovere</h3>
+        <mat-selection-list #serviti>
+            <mat-list-option *ngFor="let p of prodotti_che_serve" [value]="p">
+                {{p.nome}} {{p.tipologia}}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    <div style="height: 100%; width: 5px; background-color: grey; border-radius: 15px;"></div>
+    <div style="flex-grow: 1;">
+        <h2>Prodotti Non Serviti</h2>
+        <h3> Selezionare per immetterli</h3>
+        <mat-selection-list #non_serviti>
+            <mat-list-option *ngFor="let p of prodotti_che_non" [value]="p">
+                {{p.nome}} {{p.tipologia}}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+</div>
+<div mat-dialog-content *ngIf="error">
+    <h1>Error SERVER : {{message}} </h1>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button style="margin-left: 15px;" (click)="send()">Send</button>
+</div>

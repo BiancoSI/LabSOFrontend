@@ -1,0 +1,14 @@
+.example_spacer {
+    flex: 1 1 auto;
+}
+
+.list {
+    border-radius: 13px;
+}
+
+.toolbar {
+    position: sticky;
+    height: 11%;
+    top: 0;
+    z-index: 1000;
+}

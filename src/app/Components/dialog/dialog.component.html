@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Inserisci i Dati</h1>
+<div mat-dialog-content style="flex-direction: column; display: flex !important;">
+    <form [formGroup]="formGroup" style="flex-direction: column; display: flex !important;">
+        <mat-form-field *ngFor="let e of elems" appearance="outline" style="margin: 30px;">
+            <mat-label>{{e}}</mat-label>
+            <input matInput type="text" formControlName="{{e}}">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onClick()">Cancel</button>
+    <button class="margin" mat-button [disabled]="(!formGroup.valid)" (click)="submit()">Submit</button>
+</div>

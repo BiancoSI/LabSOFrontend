@@ -1,0 +1,62 @@
+<mat-card style="margin-top: 7%; margin-left: 20%;margin-right: 20%; border-radius: 13px;">
+    <mat-card-header >
+        <mat-card-title>Fornitori 
+            <button color="primary" style="margin-left: 25rem;" mat-icon-button (click)="add()"><mat-icon>add</mat-icon></button>
+        </mat-card-title>
+        
+    </mat-card-header>
+    <mat-card-content style="display: flex;">
+        <div style="flex-grow: 1; flex-shrink: 1;" *ngIf="error ">
+            <h1>Error SERVER: {{message}}</h1>
+        </div>
+        <div style="flex-grow: 1; flex-shrink: 1;" *ngIf="!error">
+            <table mat-table matSort [dataSource]="rows" class="mat-elevation-z8" style="width: 100%;">
+                <ng-container matColumnDef="piva">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by piva">
+                        P.IVA
+                    </th>
+                    <td mat-cell *matCellDef="let row"> {{row.piva}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nome">
+                        Nome
+                    </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+                </ng-container>
+                <ng-container matColumnDef="sede">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by sede">
+                        Sede
+                    </th>
+                    <td mat-cell *matCellDef="let row"> {{row.sede}} </td>
+                </ng-container>
+                <ng-container matColumnDef="recapito">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by recapito">
+                        Recapito
+                    </th>
+                    <td mat-cell *matCellDef="let row"> {{row.recapito}} </td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Actions
+                    </th>
+                    <td mat-cell *matCellDef="let row">
+                        <button mat-icon-button (click)="delete(row)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="addFornitura(row)"><mat-icon>inventory</mat-icon></button>
+                        <button mat-icon-button style="margin-left: 10px;" (click)="modify(row)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="elems_col"></tr>
+                <tr mat-row *matRowDef="let row; columns:elems_col;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10]" showFirstLastButtons aria-label="Seleziona Pagina Fornitore"
+                #paginator>
+            </mat-paginator>
+        </div>
+       
+    </mat-card-content>
+</mat-card>

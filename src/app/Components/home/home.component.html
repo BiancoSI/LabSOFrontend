@@ -1,0 +1,22 @@
+<div style="display: flex; height: 100%;">
+    <mat-card style="margin-top: 7%; margin-left: 20%;margin-right: 20%; height: 15%; border-radius: 13px; flex-grow: 1;" >
+        <mat-card-header>
+            <mat-card-title>Welcome to B&B Nature.srl <mat-icon color="accent">spa</mat-icon></mat-card-title>
+            <mat-card-subtitle>Da Simone Bianco mat. 213339 e Ilenia Galati mat. 210406</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <h1 *ngIf="!status"><strong>Effettua il login.</strong></h1>
+            <h1 *ngIf="status">Welcome {{username}} Role : {{role}}</h1>
+        </mat-card-content>
+    </mat-card>
+    <div *ngIf="status" style="flex-grow: 0; width: 15%; background-color: white; border-radius: 15px;"> 
+        <div>
+            <mat-nav-list style="margin-top: 40%;">
+                <mat-list-item routerLink="/fornitori"><mat-icon>list</mat-icon>Fornitori</mat-list-item>
+                <mat-list-item routerLink="/ordini"><mat-icon>list</mat-icon>Ordini</mat-list-item>
+                <mat-list-item routerLink="/prodotti"><mat-icon>list</mat-icon>Prodotti</mat-list-item>
+                <mat-list-item routerLink="/fatture-fornitori"><mat-icon>list</mat-icon>Fatture Fornitori</mat-list-item>
+            </mat-nav-list>
+        </div>
+    </div>
+</div>

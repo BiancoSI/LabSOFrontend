@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Fatture Fornitori</h1>
+<div mat-dialog-content *ngIf="!error">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let ord of ordini_non_fatturati">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Ordine : {{ord.id}} - Fornitore : {{ord.fornitore.nome}} -
+                     {{ord.dataCreazione.getDate()}}/{{ord.dataCreazione.getMonth() +1}}/{{ord.dataCreazione.getFullYear()}} 
+                    </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-checkbox #check>
+                Saldato 
+            </mat-checkbox>
+            <p *ngFor="let prd of prodotti_di_ord">
+                <span *ngIf="prd.ordine.id == ord.id">{{prd.prodotto.nome}} - {{ prd.quantita }} - {{prd.prezzo}} € Cada Uno.</span>
+             </p>
+            <mat-action-row>
+                <button mat-button color="primary" (click)="sendFattura(ord, check)">Salva</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div mat-dialog-content *ngIf="error">
+    <h1> Error SERVER : {{message}}</h1>
+</div>
