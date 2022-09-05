@@ -105,7 +105,7 @@ export class DialogOrdineComponent implements OnInit {
       quantita: quantita,
       prezzo: prezzo
     }
-    if (this.prodotti_scelti.find((value: helpRPO) => { return value.prodotto.id != help.prodotto.id }) || this.prodotti_scelti.length == 0)
+    if (!this.prodotti_scelti.find((value: helpRPO) => { return value.prodotto.id == help.prodotto.id }) || this.prodotti_scelti.length == 0)
       this.prodotti_scelti.push(help);
   }
 

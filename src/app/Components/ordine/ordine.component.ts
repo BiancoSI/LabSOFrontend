@@ -20,7 +20,7 @@ export class OrdineComponent implements OnInit {
   error!:boolean;
   message!:string;
 
-  elems_col:string[] = ['id', 'dataConsegna', 'dataCreazione', 'fornitore', 'actions'];
+  elems_col:string[] = ['id',  'dataCreazione', 'dataConsegna','fornitore', 'actions'];
 
   rows!:MatTableDataSource<Ordine>;
 

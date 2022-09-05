@@ -12,12 +12,11 @@
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Fornitore</mat-label>
-                <input matInput formControlName="fornitore" [matAutocomplete]="auto" (ngModelChange)="trova_prodotti()">
-                <mat-autocomplete #auto autoActiveFirstOption>
+                <mat-select #auto autoActiveFirstOption formControlName="fornitore" (ngModelChange)="trova_prodotti()">
                     <mat-option *ngFor="let f of fornitori" [value]="f.piva">
                         {{f.nome}} di {{f.sede}}
                     </mat-option>
-                </mat-autocomplete>
+                </mat-select>
             </mat-form-field>
         </form>
     </section>

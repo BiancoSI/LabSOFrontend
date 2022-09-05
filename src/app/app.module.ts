@@ -37,6 +37,7 @@ import { DialogFornituraComponent } from './Components/dialog-fornitura/dialog-f
 import { DialogFatturafComponent } from './Components/dialog-fatturaf/dialog-fatturaf.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     DialogFatturafComponent
   ],
   imports: [
+    MatSelectModule,
     MatCheckboxModule,
     MatExpansionModule,
     MatAutocompleteModule,
