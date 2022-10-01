@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { initializer } from '../init/app-init';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './Components/home/home.component';
 import { ToolbarComponent } from './Components/toolbar/toolbar.component';
@@ -28,7 +27,7 @@ import { DialogComponent } from './Components/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DialogDeleteComponent } from './Components/dialog-delete/dialog-delete.component';
 import { DialogOrdineComponent } from './Components/dialog-ordine/dialog-ordine.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -38,6 +37,13 @@ import { DialogFatturafComponent } from './Components/dialog-fatturaf/dialog-fat
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { initializer } from 'src/init/my_auth/app.init';
+import { AuthService } from './Services/AuthService/auth.service';
+import { JwtInterceptor } from './Services/RestService/JWT.interceptor';
+import { ErrorInterceptor } from './Services/RestService/Error.interceptor';
+import { AccessDeniedComponent } from './Components/access-denied/access-denied.component';
+import { RefreshTokenComponent } from './Components/refresh-token/refresh-token.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +59,12 @@ import {MatSelectModule} from '@angular/material/select';
     DialogDeleteComponent,
     DialogOrdineComponent,
     DialogFornituraComponent,
-    DialogFatturafComponent
+    DialogFatturafComponent,
+    AccessDeniedComponent,
+    RefreshTokenComponent
   ],
   imports: [
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatCheckboxModule,
     MatExpansionModule,
@@ -81,13 +90,9 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializer,
-      multi: true,
-      deps: [KeycloakService]
-    },
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

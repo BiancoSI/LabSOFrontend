@@ -11,6 +11,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { DialogFornituraComponent } from '../dialog-fornitura/dialog-fornitura.component';
 import { Prodotto } from '../../Object/Fornitore';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-fornitore',
@@ -82,7 +83,7 @@ export class FornitoreComponent implements OnInit {
       this.ngOnInit();
     }else{
       this.error = true;
-      this.message = response.error['message'];
+      this.message = (response as HttpErrorResponse).error['message'];
     }
   }
 
