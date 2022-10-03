@@ -1,0 +1,31 @@
+<mat-card class="center mat-elevation-z8 card">
+    <mat-card-header >
+        <mat-card-title style="margin-left: 47%; color: blueviolet;">
+            <span >Registrazione</span>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+        <form style="display: flex; flex-direction: column; " [formGroup]="formGroup" class="center" >
+            <mat-form-field *ngFor="let e of elems" style="margin-top: 3%;" appearance="outline" >
+                <mat-label style="color:white">{{e}}</mat-label>
+                <input style="color:white" matInput formControlName = "{{e}}" *ngIf=" e == 'Username'" readonly [value]="formGroup.controls['E-mail'].value">
+                <input style="color:white" matInput formControlName = "{{e}}" *ngIf=" e == 'Password'" type="password">
+                <input style="color:white" matInput formControlName = "{{e}}" *ngIf=" e == 'Conferma'" type="password">
+                <input style="color:white" matInput formControlName = "{{e}}" *ngIf=" e != 'Username' && e != 'Password' && e != 'Conferma'">
+                <mat-error *ngIf="!this.f()[e].valid && e=='Conferma'">
+                    Errore password non uguali.
+                </mat-error>
+                <mat-error *ngIf="!this.f()[e].valid && e=='Password'">
+                    Errore password: minima lunghezza: 8; Senza spazi.
+                </mat-error>
+                <mat-error *ngIf="!this.f()[e].valid && e=='E-mail'">
+                    Errore : E-mail non valida
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="registrati" color="primary" style="border-radius: 25px; margin-left: 5%;"
+        (click)="registrati()">Registrati</button>
+    </mat-card-actions>
+</mat-card>

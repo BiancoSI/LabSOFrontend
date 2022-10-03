@@ -13,12 +13,13 @@ export class RefreshTokenComponent implements OnInit {
   constructor(private auth:AuthService, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    /*
     this.auth.refreshToken().subscribe({
       next: (response :any) =>{
         this.auth.autentica(response as User);
         this.router.navigate([this.route.snapshot.queryParamMap.get('redirectTo')]);
       }
-    })
+    })*/
   }
 
 }

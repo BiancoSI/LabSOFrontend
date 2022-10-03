@@ -44,6 +44,7 @@ import { JwtInterceptor } from './Services/RestService/JWT.interceptor';
 import { ErrorInterceptor } from './Services/RestService/Error.interceptor';
 import { AccessDeniedComponent } from './Components/access-denied/access-denied.component';
 import { RefreshTokenComponent } from './Components/refresh-token/refresh-token.component';
+import { RegistrazioneComponent } from './Components/registrazione/registrazione.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { RefreshTokenComponent } from './Components/refresh-token/refresh-token.
     DialogFornituraComponent,
     DialogFatturafComponent,
     AccessDeniedComponent,
-    RefreshTokenComponent
+    RefreshTokenComponent,
+    RegistrazioneComponent
   ],
   imports: [
     MatProgressSpinnerModule,

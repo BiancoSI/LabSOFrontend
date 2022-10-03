@@ -9,6 +9,7 @@ import { FattureFornitoreComponent } from './Components/fatture-fornitore/fattur
 import { AuthGuard } from 'src/init/my_auth/app.guard';
 import { AccessDeniedComponent } from './Components/access-denied/access-denied.component';
 import { RefreshTokenComponent } from './Components/refresh-token/refresh-token.component';
+import { RegistrazioneComponent } from './Components/registrazione/registrazione.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path:'ordini', component:OrdineComponent, canActivate: [AuthGuard], data:{roles:['admin']}},
   {path:'fatture-fornitori', component: FattureFornitoreComponent, canActivate:[AuthGuard], data:{roles:['admin']}},
   {path:'access-denied', component:AccessDeniedComponent},
-  {path:'refresh-token', component:RefreshTokenComponent},
+  {path:'registrazione', component:RegistrazioneComponent},
   {path:'', redirectTo:'home', pathMatch:'full'}
 ];
 

@@ -1,5 +1,9 @@
 <mat-card class="mat-card">
-    <mat-card-title>Login Page</mat-card-title>
+    <mat-card-header style="margin-top: 3%; margin-left: 38%;">
+        <mat-card-title>
+            <span style="color :blue">Login</span>
+        </mat-card-title>
+    </mat-card-header>
     <mat-card-content style="margin-top: 5%;">
         <form [formGroup]="formGroup" style="margin-left: 10%;">
             <mat-form-field appearance="outline" color="primary">
@@ -11,14 +15,15 @@
                 <input matInput type="password" formControlName="password">
             </mat-form-field>
         </form>
-        <div *ngIf="loading" style="display: block; margin-left: auto; margin-right: auto;">
+        <div *ngIf="loading" class="center" style="width:100%">
             <mat-spinner></mat-spinner>
         </div>
         <div *ngIf="error">
             <h1>{{message}}</h1>
         </div>
+        <div style="margin-top: 5%;">
+            <button mat-raised-button color="primary" (click)="onSubmit()" class="button">Login</button>
+            <button mat-flat-button routerLink="registrazione" class="button_link button">Registrati</button>
+        </div>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="onSubmit()" style="margin-left: 10%;">Submit</button>
-    </mat-card-actions>
 </mat-card>
