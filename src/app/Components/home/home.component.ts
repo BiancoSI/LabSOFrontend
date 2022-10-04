@@ -25,10 +25,6 @@ export class HomeComponent implements OnInit, AfterContentChecked {
   ngOnInit(): void {
   }
 
-  prova(){
-    this.auth.prova(this.afterProva.bind(this));
-  }
-
   afterProva(response:any, status:boolean){
     if(status){
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestManager } from '../RestService/RestManager';
 import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { ADDRESS_SERVER } from 'src/app/Static/Static';
-import { User } from '../../Object/User';
+import { User, Client } from '../../Object/User';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   url: string = ADDRESS_SERVER;
-  url_no_token: string[] = ['/home', 'login'];
+  url_no_token: string[] = ['/home', 'login', 'registrazione'];
 
   http: HttpClient;
   constructor(http: HttpClient, private router: Router) {
@@ -80,8 +80,8 @@ export class AuthService {
     return ret = (user != undefined) ? (JSON.parse(user) as User).roles : [];
   }
 
-  prova(callback: any) {
-    this.http.get(ADDRESS_SERVER + "/account/prova").subscribe({
+  registra(user:Client, callback: any) {
+    this.http.post(ADDRESS_SERVER + "/account/register/new-user", user).subscribe({
       next: (response: any) => {
         callback(response, true);
       },
