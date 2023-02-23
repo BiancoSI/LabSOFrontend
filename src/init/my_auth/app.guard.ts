@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
 
     async isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if(!this.auth.isAuthenticated()){
-            this.router.navigate(['login'], {queryParams:{redirectTo:state.url}})
+           return this.router.navigate(['login'], {queryParams:{redirectTo:state.url}})
         }
         var client_roles:string[] = this.auth.getRoles();
         console.log(client_roles);
